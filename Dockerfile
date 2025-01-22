@@ -22,14 +22,14 @@ RUN apk add --no-cache dos2unix
 RUN dos2unix start.sh && \
     chmod +x start.sh
 
-# Create data directory with correct permissions
-RUN mkdir -p /app/data && \
-    chown -R 1000:1000 /app/data && \
-    chmod 755 /app/data
+# Create data directory
+RUN mkdir -p /app/data
 
-# Create a non-root user with specific UID/GID
-RUN addgroup -g 1000 -S appgroup && \
-    adduser -u 1000 -S appuser -G appgroup
+# Create user and set permissions
+RUN addgroup -S appgroup && \
+    adduser -S appuser -G appgroup && \
+    chown -R appuser:appgroup /app/data && \
+    chmod 755 /app/data
 
 USER appuser
 
