@@ -1,7 +1,11 @@
-const express = require('express');
-const path = require('path');
-const { Level } = require('level');
-const cors = require('cors');
+import express from 'express';
+import path from 'path';
+import { Level } from 'level';
+import cors from 'cors';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000;
