@@ -1,6 +1,6 @@
 # Minimalist Todo App
 
-A modern, minimalist todo application with device synchronization and calendar integration capabilities.
+A modern, minimalist todo application with device synchronization and calendar integration capabilities, packaged for Cloudron.io.
 
 ## Features
 
@@ -10,49 +10,41 @@ A modern, minimalist todo application with device synchronization and calendar i
 - 📅 Calendar integration with subscribable ICS feed
 - 🔄 Offline support with IndexedDB
 - 📲 Progressive Web App (PWA) ready
-- 🐳 Docker support for easy self-hosting
+- ☁️ Easy installation on Cloudron.io
 
-## Self-Hosting
+## Installation
 
-### Prerequisites
+### Cloudron Installation
 
-- Docker
-- Docker Compose
+1. Open your Cloudron dashboard
+2. Go to App Store
+3. Click on "Install from App Store"
+4. Search for "Todo App" or use direct URL
+5. Click Install
 
-### Installation
+The app will be automatically installed and configured on your Cloudron instance.
 
-1. Clone the repository:
+### Manual Installation on Cloudron
+
+If you want to install the app manually:
+
+1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/todo-app.git
-cd todo-app
+git clone https://github.com/bebravernow/pwa-todo-app-with-sync-cloudron-app.git
+cd pwa-todo-app-with-sync-cloudron-app
 ```
 
-2. Build and start the containers:
+2. Install the app on your Cloudron:
 ```bash
-docker-compose up -d
+cloudron install
 ```
 
-The application will be available at `http://localhost:3000`.
+## Data Storage
 
-### Configuration
-
-Environment variables (in docker-compose.yml):
-- `PORT`: Server port (default: 3000)
-- `NODE_ENV`: Environment (default: production)
-
-### Data Persistence
-
-Todo data is stored in a Docker volume named `todo-data`. This ensures your data persists across container restarts.
-
-To backup your data:
-```bash
-docker run --rm -v todo-app_todo-data:/data -v $(pwd):/backup alpine tar czf /backup/todos-backup.tar.gz /data
-```
-
-To restore from backup:
-```bash
-docker run --rm -v todo-app_todo-data:/data -v $(pwd):/backup alpine sh -c "cd /data && tar xzf /backup/todos-backup.tar.gz --strip 1"
-```
+Todo data is stored in the Cloudron-managed data directory at `/app/data/todos-db`. This ensures:
+- Data persistence across app updates
+- Automatic backups through Cloudron
+- Proper data isolation
 
 ## Development
 
@@ -70,13 +62,22 @@ npm run build
 npm start
 ```
 
-## Security
+## Security Features
 
 - All sync data is end-to-end encrypted
 - Sync codes are never stored on servers
 - P2P connections are encrypted
 - Calendar feed requires valid sync code
 - Data is stored locally in LevelDB
+- Runs as non-root user in container
+
+## Cloudron-specific Configuration
+
+The app is configured to work seamlessly with Cloudron:
+- Uses Cloudron's data directory for persistence
+- Implements health check endpoint
+- Proper process management
+- Secure by default configuration
 
 ## License
 
