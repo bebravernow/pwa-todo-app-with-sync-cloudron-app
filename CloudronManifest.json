@@ -11,8 +11,8 @@
     "localstorage": {}
   },
   "manifestVersion": 2,
-  "website": "https://github.com/axelsegebrecht/todo-app",
-  "contactEmail": "",
+  "website": "https://github.com/bebravernow/pwa-todo-app-with-sync-cloudron-app",
+  "contactEmail": "axel@bebraver.online",
   "icon": "logo.png",
   "tags": [
     "todo",
