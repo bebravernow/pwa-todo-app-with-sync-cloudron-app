@@ -1,0 +1,23 @@
+{
+  "id": "com.github.axelsegebrecht.todo",
+  "title": "Todo App",
+  "author": "axelsegebrecht",
+  "description": "A modern, minimalist todo application with device synchronization and calendar integration capabilities",
+  "tagline": "Minimalist Todo App with P2P Sync",
+  "version": "1.0.0",
+  "healthCheckPath": "/health",
+  "httpPort": 3000,
+  "addons": {
+    "localstorage": {}
+  },
+  "manifestVersion": 2,
+  "website": "https://github.com/axelsegebrecht/todo-app",
+  "contactEmail": "",
+  "icon": "logo.png",
+  "tags": [
+    "todo",
+    "tasks",
+    "productivity"
+  ],
+  "mediaLinks": []
+}
